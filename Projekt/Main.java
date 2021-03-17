@@ -2,14 +2,106 @@ package Projekt;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         String[] Atakinazwa = {"Prawy sierpowy ", "Lewy sierpowy ", "Kopniak w udo ", "Uderzenie z łokcia ", "Nietrafiny atak ", "Pięść w oko", "Puk puk w czoło", "Kolanko w twarz"};
         int[] Atakiwartosc = {-20, -15, -25, -13, -0, -14, -21, -30};
         int hptwoje, hpwrog;
-        hptwoje = 200;
-        hpwrog = 200;
+        hptwoje = 1000;
+        hpwrog = 800;
+        Scanner scan = new Scanner(System.in);
+        boolean menu = true;
+        Scanner poziomtr = new Scanner(System.in);
+        boolean poziomtrudnosci = true;
+
+        while (menu) {
+            System.out.print("Wybierz opcję: \nuruchom grę[0] \nwyświetl autora[1] \npoziom trudności[2] \nwyjście[3] \n");
+            String userInput = scan.next();
+
+            switch (userInput) {
+                case "0": {
+                    menu = false;
+                    if (hpwrog < 899) {
+                        System.out.println("Przed rozpoczęciem gry wybierz poziom trudności.");
+                        TimeUnit.SECONDS.sleep(1);
+                        System.out.println(" ");
+                        menu = true;
+                    }
+                    break;
+                }
+                case "1": {
+                    System.out.println(" ");
+                    System.out.println("Autorem gry jest Piotr Dragan.");
+                    System.out.println(" ");
+                    System.out.println("Powrót do menu nastąpi automatycznie.");
+                    TimeUnit.SECONDS.sleep(2);
+                    System.out.println(" ");
+                    menu = true;
+                    break;
+                }
+                case "2": {
+                    while (poziomtrudnosci) {
+                        System.out.println("Wybierz poziom trudności: \nłatwy[0] \nśredni[1] \nexpert[2]");
+                        String userwejscie = poziomtr.next();
+                        switch (userwejscie) {
+                            case "0": {
+                                hpwrog = 900;
+                                System.out.println("Wybrałeś poziom łatwy.");
+                                System.out.println("Ustawianie poziomu...");
+                                TimeUnit.SECONDS.sleep(2);
+                                System.out.println("Powrót do menu...");
+                                TimeUnit.SECONDS.sleep(2);
+                                poziomtrudnosci = false;
+                                menu = true;
+                                break;
+                            }
+                            case "1": {
+                                hpwrog = 1000;
+                                System.out.println("Wybrałeś poziom średni.");
+                                System.out.println("Ustawianie poziomu...");
+                                TimeUnit.SECONDS.sleep(2);
+                                System.out.println("Powrót do menu...");
+                                TimeUnit.SECONDS.sleep(2);
+                                poziomtrudnosci = false;
+                                menu = true;
+                                break;
+                            }
+                            case "2": {
+                                hpwrog = 1200;
+                                System.out.println("Wybrałeś poziom średni.");
+                                System.out.println("Ustawianie poziomu...");
+                                TimeUnit.SECONDS.sleep(2);
+                                System.out.println("Powrót do menu...");
+                                TimeUnit.SECONDS.sleep(2);
+                                poziomtrudnosci = false;
+                                menu = true;
+                                break;
+                            }
+                            default: {
+                                System.out.println("Podałeś złe dane.");
+                                System.out.println("Powrót do menu...");
+                                TimeUnit.SECONDS.sleep(2);
+                                poziomtrudnosci = false;
+                                menu = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                case "3": {
+                    System.out.println("trwa opuszczanie gry...");
+                    TimeUnit.SECONDS.sleep(2);
+                    System.exit(5);
+                    break;
+                }
+                default: {
+                    menu = true;
+                    break;
+                }
+            }
+        }
         Scanner scanner = new Scanner(System.in);
         String[] person = new String[2];
         System.out.print("Wybierz imie: ");
@@ -18,12 +110,16 @@ public class Main {
         person[1] = scanner.next();
         System.out.println(" ");
         System.out.println("   Zacznijmy grę!!!    ");
+        TimeUnit.SECONDS.sleep(1);
         System.out.println(" ");
         System.out.println("Ilość życia " + person[0] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
+        TimeUnit.SECONDS.sleep(1);
         Random random1 = new Random();
         System.out.println(" ");
         System.out.println("Wróg oddaje atak");
+        TimeUnit.SECONDS.sleep(1);
         System.out.println(" ");
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
@@ -91,7 +187,9 @@ public class Main {
             }
         }
         System.out.println("Ilość życia " + person[1] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
+        TimeUnit.SECONDS.sleep(1);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
         }
@@ -171,7 +269,9 @@ public class Main {
                 }
             }
         }
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia " + person[0] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
@@ -182,6 +282,7 @@ public class Main {
         Random random2 = new Random();
         System.out.println(" ");
         System.out.println("Wróg oddaje atak");
+        TimeUnit.SECONDS.sleep(1);
         System.out.println(" ");
         for (int i = 0; i < 1; i++) {
             int losuj = random2.nextInt(8);
@@ -242,7 +343,9 @@ public class Main {
                 System.out.println("Tylko na tyle cię stać!! HAHAHAHAHA");
             }
         }
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia " + person[1] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
@@ -324,7 +427,9 @@ public class Main {
             }
         }
         System.out.println("Ilość życia " + person[0] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
+        TimeUnit.SECONDS.sleep(1);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
         }
@@ -334,6 +439,7 @@ public class Main {
         Random random3 = new Random();
         System.out.println(" ");
         System.out.println("Wróg oddaje atak");
+        TimeUnit.SECONDS.sleep(1);
         System.out.println(" ");
         for (int i = 0; i < 1; i++) {
             int losuj = random3.nextInt(8);
@@ -395,7 +501,9 @@ public class Main {
             }
         }
         System.out.println("Ilość życia " + person[1] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
+        TimeUnit.SECONDS.sleep(1);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
         }
@@ -476,7 +584,9 @@ public class Main {
             }
         }
         System.out.println("Ilość życia " + person[0] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
+        TimeUnit.SECONDS.sleep(1);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
         }
@@ -486,6 +596,7 @@ public class Main {
         Random random4 = new Random();
         System.out.println(" ");
         System.out.println("Wróg oddaje atak");
+        TimeUnit.SECONDS.sleep(1);
         System.out.println(" ");
         for (int i = 0; i < 1; i++) {
             int losuj = random4.nextInt(8);
@@ -547,7 +658,9 @@ public class Main {
             }
         }
         System.out.println("Ilość życia " + person[1] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
+        TimeUnit.SECONDS.sleep(1);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
         }
@@ -628,7 +741,9 @@ public class Main {
             }
         }
         System.out.println("Ilość życia " + person[0] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
+        TimeUnit.SECONDS.sleep(1);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
         }
@@ -638,6 +753,7 @@ public class Main {
         Random random5 = new Random();
         System.out.println(" ");
         System.out.println("Wróg oddaje atak");
+        TimeUnit.SECONDS.sleep(1);
         System.out.println(" ");
         for (int i = 0; i < 1; i++) {
             int losuj = random5.nextInt(8);
@@ -699,7 +815,9 @@ public class Main {
             }
         }
         System.out.println("Ilość życia " + person[1] + " to: " + hptwoje);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("Ilość życia wroga to: " + hpwrog);
+        TimeUnit.SECONDS.sleep(1);
         if (hptwoje < hpwrog) {
             System.out.println("Wal mocniej bo przegrasz!");
         }
@@ -778,12 +896,22 @@ public class Main {
                     break;
                 }
             }
+            System.out.println("Ilość życia " + person[1] + " to: " + hptwoje);
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println("Ilość życia wroga to: " + hpwrog);
+            TimeUnit.SECONDS.sleep(1);
             if (hptwoje < hpwrog) {
                 System.out.println("    Przegrałeś " + person[1]);
+                TimeUnit.SECONDS.sleep(2);
+                System.out.println("Opuszczanie gry...");
+                TimeUnit.SECONDS.sleep(2);
             }
             if (hpwrog < hptwoje) {
                 System.out.println("   ^^Pokonałeś wroga przybyszu^^");
+                TimeUnit.SECONDS.sleep(2);
+                System.out.println("Opuszczanie gry...");
+                TimeUnit.SECONDS.sleep(2);
             }
         }
     }
-}
+    }
